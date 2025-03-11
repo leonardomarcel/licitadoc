@@ -1,0 +1,89 @@
+.document_card {
+    padding: 1em;
+    border: 1px solid #7a7a7a;
+    border-radius: 5px;
+    width: 24%;
+    margin: 0.5%;
+
+ }
+
+ .document_card h4 {
+    background-color: #222222;
+    padding: 0.4em;
+    margin-bottom: 1.3em;
+    color: #334bff;
+    font-size: 1.3em;
+ }
+
+ .document_card p {
+    margin-bottom: 1em;
+    color: #7a7a7a;
+ }
+
+ .document_card p span {
+    font-weight: bold;
+ }
+
+ .category_text {
+    display: flex;
+    align-items: center;
+ }
+
+ .category_text span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 5px;
+ }
+
+ .category_text .infra {
+    background-color: #992200;
+ }
+
+ .category_text .desenvolvimento {
+    background-color: #00bb22;
+ }
+
+ .category_text .design {
+    background-color: #0000ee;
+ }
+
+ .category_text .planejamento {
+    background-color: #ee0000;
+ }
+
+ .document_card_actions {
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+ }
+
+ .document_card_actions a,
+ .document_card_actions button {
+    text-decoration: none;
+    border: none;
+    background-color: #fff;
+    color: #222;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+    margin-right: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+ }
+
+ .document_card_actions svg {
+    margin-right: 0.5em;
+ }
+
+ .document_card_actions a:hover,
+ .document_card_actions button:hover {
+    background-color: #222;
+    color: #334bff;
+ }

@@ -1,0 +1,12 @@
+.documents_container {
+    padding: 2em;
+
+}
+
+.title_container {
+    display: flex; /* Para os elementos ficarem lado a lado */
+    justify-content: 'space-between'; /* Para os elementos ficarem no seu espaço */
+    align-items: center;
+    margin-bottom: 2em; /* Espaçamento abaixo do título */
+    gap: 20px;
+}
