@@ -30,7 +30,7 @@ function DocumentCard({doc}) {
       
 
     function DowloadDocument({doc}){
-        fetch(`http://127.0.0.1:8000/documents/download/${doc.id}`, {
+        fetch(`http://127.0.0.1:8000/documents/api/download/${doc.id}`, {
             method: "GET",
             headers: {
                Accept: '*/*'

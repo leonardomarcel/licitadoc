@@ -9,7 +9,7 @@ function Documents() {
     useEffect(()=>{
         setTimeout(
             () => {
-                fetch("http://leonardo-ECOIT:8000/documents/documents/", {
+                fetch("http://localhost:8000/documents/api/documents/", {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'

@@ -12,7 +12,7 @@ function DocomuntViewer() {
   const[document, setDocument] = useState([])
   const {id} = useParams()
   const zoomPluginInstance = zoomPlugin();
-  var fileUrl = `http://127.0.0.1:8000/documents/view/${id}`; 
+  var fileUrl = `http://localhost:8000/documents/api/view/${id}`; 
 
 
   return (
