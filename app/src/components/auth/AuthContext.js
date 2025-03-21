@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   // Simula a verificação de autenticação no backend
   useEffect(() => {
-    fetch("http://localhost:8000/auth/api/check-session/", { credentials: "include" })
+    fetch("http://3.88.34.201:8000/auth/api/check-session/", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         if (data.authenticated) {

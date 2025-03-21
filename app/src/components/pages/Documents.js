@@ -9,7 +9,7 @@ function Documents() {
     useEffect(()=>{
         setTimeout(
             () => {
-                fetch("http://localhost:8000/documents/api/documents/", {
+                fetch("http://3.88.34.201:8000/documents/api/documents/", {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'
