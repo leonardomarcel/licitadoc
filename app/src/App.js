@@ -9,7 +9,6 @@ import Footer from './components/layout/Footer'
 import Documents from './components/pages/Documents'
 import DocumentViewe from './components/layout/DocumentViewer'
 import { Worker } from '@react-pdf-viewer/core';
-import Logout from './components/auth/Logout'
 
 function App() {
   return (
@@ -23,8 +22,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route exact path='/home' element={<Home/>}/>
               <Route exact path='/documents' element={<Documents/>}/>
-              <Route exact path='/document/:id' element={<DocumentViewe/>}/>
-              <Route exact path='/logout' element={<Logout/>}/>
+              <Route exact path='/documents/:id' element={<DocumentViewe/>}/>
             </Route>
              {/* Redirecionar rotas desconhecidas para "/" */}
           <Route path="*" element={<Navigate to="/" replace />} />

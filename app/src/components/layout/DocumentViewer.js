@@ -9,29 +9,48 @@ import { useState, useEffect } from 'react'
 
 
 function DocomuntViewer() {
-  const[document, setDocument] = useState([])
-  const {id} = useParams()
-  const zoomPluginInstance = zoomPlugin();
-  var fileUrl = `http://localhost:8000/documents/api/view/${id}`; 
+    const [pdfUrl, setPdfUrl] = useState(null);
+    const { id } = useParams();
+    const zoomPluginInstance = zoomPlugin();
+  // var fileUrl = `http://localhost:8000/documents/api/view/${id}`; 
+  useEffect(() => {
+    const fetchPdf = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/documents/api/view/${id}`, {
+                method: "GET",
+                credentials: "include", // Enviar cookies de sessão
+                headers: {
+                    Accept: '*/*'
+                },
+            });
 
+            if (!response.ok) throw new Error("Erro ao carregar o PDF");
 
-  return (
-   
-      <div style={{height: "100vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            setPdfUrl(url);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-        <Viewer 
-        fileUrl={fileUrl}
-        plugins={[zoomPluginInstance, ZoomInIcon, ZoomOutIcon]}
-        />
-      </div>
-    
-    
+    fetchPdf();
+    return () => {
+        if (pdfUrl) {
+            URL.revokeObjectURL(pdfUrl); // Limpa a URL para evitar vazamento de memória
+        }
+    };
+}, [id]);
 
-
-    
-   
-
-  )
+return (
+  <div style={{ height: "100vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      {pdfUrl ? (
+          <Viewer fileUrl={pdfUrl} plugins={[zoomPluginInstance]} />
+      ) : (
+          <p>Carregando PDF...</p>
+      )}
+  </div>
+);
 }
 
 export default DocomuntViewer

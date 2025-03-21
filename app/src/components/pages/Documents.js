@@ -13,7 +13,8 @@ function Documents() {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'
-                    }
+                    },
+                    credentials: "include",  // Permite enviar os cookies de autenticação
                 })
                 .then((resp) => resp.json())
                 .then((data) => {
