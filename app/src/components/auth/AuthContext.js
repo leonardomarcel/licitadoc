@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   // Função de login (exemplo)
   const login = async (credentials) => {
-    const res = await fetch("http://localhost:8000/auth/api/login/", {
+    const res = await fetch("http://3.88.34.201:8000/auth/api/login/", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
