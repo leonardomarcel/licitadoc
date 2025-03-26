@@ -8,7 +8,7 @@ function Documents() {
     const[documents, setDocuments] = useState([])
 
     function DowloadDocument(doc){
-        fetch(`https://3.86.227.12.nip.io/documents/api/download/${doc.id}`, {
+        fetch(`http://localhost:8000/documents/api/download/${doc.id}`, {
             method: "GET",
             headers: {
                Accept: '*/*'
@@ -33,7 +33,7 @@ function Documents() {
     useEffect(()=>{
         setTimeout(
             () => {
-                fetch("https://52.23.176.133.nip.io/documents/api/documents/", {
+                fetch("http://localhost:8000/documents/api/documents/", {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'
@@ -52,13 +52,10 @@ function Documents() {
     }, [])
 
     return (
-        <div className={styles.documents_container}>
-            <div className={styles.title_container}>
-                <h1>Meus Documentos</h1>
-                
-            </div>
-           <Container customClass="start">
+        
+            
            <div className={styles.document_list_container}>
+            <h1>Documentos</h1>
            <table className={styles.document_table}>
             <thead>
                 <tr>
@@ -94,10 +91,9 @@ function Documents() {
             </tbody>
             </table>
             </div>
-            </Container>
             
             
-        </div>
+       
     )
 }
 export default Documents
