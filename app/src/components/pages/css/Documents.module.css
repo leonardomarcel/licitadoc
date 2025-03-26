@@ -1,5 +1,6 @@
 .documents_container {
     padding: 2em;
+    
 
 }
 
@@ -9,4 +10,81 @@
     align-items: center;
     margin-bottom: 2em; /* Espaçamento abaixo do título */
     gap: 20px;
+}
+
+.document_list_container {
+    width: 100%;
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+}
+
+.document_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    min-width: 600px; /* Garante que a tabela tenha um tamanho mínimo */
+}
+
+.document_table th, .document_table td {
+    border: 1px solid #7a7a7a;
+    padding: 0.8em;
+    text-align: left;
+    white-space: nowrap; /* Evita que os textos quebrem em várias linhas */
+}
+
+.document_table th {
+    background-color: #222222;
+    color: #ffffff;
+}
+
+.document_table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action_button {
+    text-decoration: none;
+    border: none;
+    background-color: #fff;
+    color: #222;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.action_button svg {
+    margin-right: 0.5em;
+}
+
+.action_button:hover {
+    background-color: #222;
+    color: #334bff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .document_table {
+        min-width: 100%; /* Evita que a tabela ultrapasse o container */
+    }
+
+    .document_list_container {
+        overflow-x: auto; /* Garante a rolagem horizontal */
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .action_button {
+        width: 100%;
+        justify-content: center;
+    }
 }

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   // Simula a verificação de autenticação no backend
   useEffect(() => {
-    fetch("https://3.86.227.12.nip.io/auth/api/check-session/", { credentials: "include" })
+    fetch("https://52.23.176.133.nip.io/auth/api/check-session/", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         if (data.authenticated) {
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   // Função de login (exemplo)
   const login = async (credentials) => {
-    const res = await fetch("https://3.86.227.12.nip.io/auth/api/login/", {
+    const res = await fetch("https://52.23.176.133.nip.io/auth/api/login/", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   // Função de logout
   const logout = async () => {
-    await fetch("https://3.86.227.12.nip.io/auth/api/logout/", { method: "POST", credentials: "include" });
+    await fetch("https://52.23.176.133.nip.io/auth/api/logout/", { method: "POST", credentials: "include" });
     setUser(null);
   };
 
