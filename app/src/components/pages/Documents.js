@@ -52,13 +52,8 @@ function Documents() {
     }, [])
 
     return (
-        <div className={styles.documents_container}>
-            <div className={styles.title_container}>
-                <h1>Meus Documentos</h1>
-                
-            </div>
-           <Container customClass="start">
-           <div className={styles.document_list_container}>
+        <div className={styles.document_list_container}>
+            <h1>Documentos</h1>
            <table className={styles.document_table}>
             <thead>
                 <tr>
@@ -94,10 +89,10 @@ function Documents() {
             </tbody>
             </table>
             </div>
-            </Container>
             
             
-        </div>
+       
+    
     )
 }
 export default Documents
