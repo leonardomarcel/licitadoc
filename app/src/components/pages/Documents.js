@@ -33,7 +33,7 @@ function Documents() {
     useEffect(()=>{
         setTimeout(
             () => {
-                fetch("https://52.23.176.133.nip.io/documents/api/documents/", {
+                fetch("https://34.226.148.243.nip.io/documents/api/documents/", {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'
