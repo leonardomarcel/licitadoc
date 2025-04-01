@@ -8,7 +8,7 @@ function Documents() {
     const[documents, setDocuments] = useState([])
 
     function DowloadDocument(doc){
-        fetch(`https://3.86.227.12.nip.io/documents/api/download/${doc.id}`, {
+        fetch(`https://34.226.148.243.nip.io/documents/api/download/${doc.id}`, {
             method: "GET",
             headers: {
                Accept: '*/*'
