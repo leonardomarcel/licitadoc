@@ -10,7 +10,7 @@ function DocumentCard({doc}) {
       
 
     function DowloadDocument(doc){
-        fetch(`https://3.86.227.12.nip.io/documents/api/download/${doc.id}`, {
+        fetch(`https://3.95.74.135.nip.io/documents/api/download/${doc.id}`, {
             method: "GET",
             headers: {
                Accept: '*/*'

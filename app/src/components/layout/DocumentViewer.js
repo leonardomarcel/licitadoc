@@ -16,7 +16,7 @@ function DocomuntViewer() {
   useEffect(() => {
     const fetchPdf = async () => {
         try {
-            const response = await fetch(`https://34.226.148.243.nip.io/documents/api/view/${id}`, {
+            const response = await fetch(`https://3.95.74.135.nip.io/documents/api/view/${id}`, {
                 method: "GET",
                 credentials: "include", // Enviar cookies de sessão
                 headers: {

@@ -8,7 +8,7 @@ function Documents() {
     const[documents, setDocuments] = useState([])
 
     function DowloadDocument(doc){
-        fetch(`https://34.226.148.243.nip.io/documents/api/download/${doc.id}`, {
+        fetch(`https://3.95.74.135.nip.io/documents/api/download/${doc.id}`, {
             method: "GET",
             headers: {
                Accept: '*/*'
@@ -33,7 +33,7 @@ function Documents() {
     useEffect(()=>{
         setTimeout(
             () => {
-                fetch("https://34.226.148.243.nip.io/documents/api/documents/", {
+                fetch("https://3.95.74.135.nip.io/documents/api/documents/", {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json'
