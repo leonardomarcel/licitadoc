@@ -2,10 +2,13 @@ import styles from './css/Documents.module.css'
 import Container from '../layout/Container'
 import { Link } from 'react-router-dom'
 import {BsDownload, BsViewList} from 'react-icons/bs'
+import Paginator from '../layout/Paginator'
 // import DocumentCard from '../document/DocumentCard' 
 import { useState, useEffect } from 'react'
 function Documents() {
     const[documents, setDocuments] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
 
     function DowloadDocument(doc){
         fetch(`https://3.95.74.135.nip.io/documents/api/download/${doc.id}`, {
@@ -30,26 +33,32 @@ function Documents() {
     }
     
 
-    useEffect(()=>{
-        setTimeout(
-            () => {
-                fetch("https://3.95.74.135.nip.io/documents/api/documents/", {
-                    method: "GET",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    credentials: "include",  // Permite enviar os cookies de autenticação
-                })
-                .then((resp) => resp.json())
-                .then((data) => {
-                    console.log(data)
-                    setDocuments(data)
-                    // setRemoveLoading(true)
-                })
-                .catch((err) => console.log(err))
-            }, 300)
+    const fetchDocuments = (page = 1) => {
+        fetch(`http://localhost:8000/documents/api/documents/?page=${page}`, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            },
+            credentials: "include",
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setDocuments(data.results)
+            setTotalPages(Math.ceil(data.count / 10))  //  10 itens por página
+        })
+        .catch((err) => console.log(err))
+    }
 
-    }, [])
+    useEffect(() => {
+        fetchDocuments(currentPage)
+    }, [currentPage])
+
+    const handlePageChange = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setCurrentPage(page)
+        }
+    }
+
 
     return (
         <div className={styles.document_list_container}>
@@ -88,6 +97,11 @@ function Documents() {
                 )}
             </tbody>
             </table>
+            <Paginator
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
             </div>
             
             
