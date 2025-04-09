@@ -1,0 +1,28 @@
+.pagination_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.pagination_container button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination_container button:hover {
+    background-color: #eee;
+}
+
+.pagination_container button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.active {
+    background-color: #007bff;
+    color: white;
+}
