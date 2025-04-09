@@ -34,7 +34,7 @@ function Documents() {
     
 
     const fetchDocuments = (page = 1) => {
-        fetch(`http://localhost:8000/documents/api/documents/?page=${page}`, {
+        fetch(`https://3.95.74.135.nip.io//documents/api/documents/?page=${page}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json'
