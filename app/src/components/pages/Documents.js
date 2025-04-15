@@ -9,6 +9,7 @@ function Documents() {
     const[documents, setDocuments] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
+    const [userGroups, setUserGroups] = useState([])
 
     function DowloadDocument(doc){
         fetch(`https://3.95.74.135.nip.io/documents/api/download/${doc.id}`, {
@@ -59,7 +60,22 @@ function Documents() {
         }
     }
 
+    useEffect(() => {
+        fetchDocuments(currentPage)
+    
+        fetch("https://3.95.74.135.nip.io/auth/api/check-groups/", {
+            credentials: "include",
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            setUserGroups(data.groups)
+        })
+        .catch(err => console.log(err))
+    }, [currentPage])
 
+    const hasDownloadPermission = userGroups.includes("premium") || userGroups.includes("admin")
+    console.log(userGroups)
+    console.log(hasDownloadPermission)
     return (
         <div className={styles.document_list_container}>
             <h1>Documentos</h1>
@@ -86,9 +102,13 @@ function Documents() {
                             
                         </td>
                         <td>
+                        {hasDownloadPermission ? (
                             <Link onClick={() => DowloadDocument(document)} title='Download'>
-                                    <BsDownload/> 
-                            </Link>  
+                            <BsDownload />
+                            </Link>
+                        ) : (
+                            <BsDownload style={{ opacity: 0.4, cursor: 'not-allowed' }} title="Sem permissão para download" />
+                        )}
                         </td>
                     </tr>
                 ))}
