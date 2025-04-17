@@ -3,13 +3,15 @@ import Container from '../layout/Container'
 import { Link } from 'react-router-dom'
 import {BsDownload, BsViewList} from 'react-icons/bs'
 import Paginator from '../layout/Paginator'
+import {useAuth}  from '../auth/AuthContext'
 // import DocumentCard from '../document/DocumentCard' 
 import { useState, useEffect } from 'react'
 function Documents() {
     const[documents, setDocuments] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
-    const [userGroups, setUserGroups] = useState([])
+    // const [userGroups, setUserGroups] = useState([])
+    const {userGroups} = useAuth();
 
     function DowloadDocument(doc){
         fetch(`https://3.95.74.135.nip.io/documents/api/download/${doc.id}`, {
@@ -60,18 +62,18 @@ function Documents() {
         }
     }
 
-    useEffect(() => {
-        // fetchDocuments(currentPage)
+    // useEffect(() => {
+    //     // fetchDocuments(currentPage)
     
-        fetch("https://3.95.74.135.nip.io/auth/api/check-groups/", {
-            credentials: "include",
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            setUserGroups(data.groups)
-        })
-        .catch(err => console.log(err))
-    }, [currentPage])
+    //     fetch("https://3.95.74.135.nip.io/auth/api/check-groups/", {
+    //         credentials: "include",
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //         setUserGroups(data.groups)
+    //     })
+    //     .catch(err => console.log(err))
+    // }, [currentPage])
 
     const hasDownloadPermission = userGroups.includes("premium") || userGroups.includes("admin")
     

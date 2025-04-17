@@ -9,6 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 // Componente Provider para gerenciar a autenticação
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userGroups, setUserGroups] = useState([])
   const [loading, setLoading] = useState(true);
 
   // Simula a verificação de autenticação no backend
@@ -24,6 +25,20 @@ export const AuthProvider = ({ children }) => {
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    // fetchDocuments(currentPage)
+
+    fetch("https://3.95.74.135.nip.io/auth/api/check-groups/", {
+        credentials: "include",
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        setUserGroups(data.groups)
+    })
+    .catch(err => console.log(err))
+}, [])
+
 
   // Função de login (exemplo)
   const login = async (credentials) => {
@@ -50,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, userGroups, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
