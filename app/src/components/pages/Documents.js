@@ -61,7 +61,7 @@ function Documents() {
     }
 
     useEffect(() => {
-        fetchDocuments(currentPage)
+        // fetchDocuments(currentPage)
     
         fetch("https://3.95.74.135.nip.io/auth/api/check-groups/", {
             credentials: "include",
@@ -74,8 +74,7 @@ function Documents() {
     }, [currentPage])
 
     const hasDownloadPermission = userGroups.includes("premium") || userGroups.includes("admin")
-    console.log(userGroups)
-    console.log(hasDownloadPermission)
+    
     return (
         <div className={styles.document_list_container}>
             <h1>Documentos</h1>
