@@ -7,6 +7,7 @@ import LoginPage from './components/pages/LoginPage'
 import Container from './components/layout/Container';
 import Footer from './components/layout/Footer'
 import Documents from './components/pages/Documents'
+import TagsDocument from './components/pages/TagsDocument'
 import DocumentViewe from './components/layout/DocumentViewer'
 import { Worker } from '@react-pdf-viewer/core';
 
@@ -22,6 +23,8 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route exact path='/home' element={<Home/>}/>
               <Route exact path='/documents' element={<Documents/>}/>
+              <Route exact path='classificacoes/documents/:tag_id' element={<Documents/>}/>
+              <Route exact path='/classificacoes/documentos' element={<TagsDocument/>}/>
               <Route exact path='/documents/:id' element={<DocumentViewe/>}/>
             </Route>
              {/* Redirecionar rotas desconhecidas para "/" */}

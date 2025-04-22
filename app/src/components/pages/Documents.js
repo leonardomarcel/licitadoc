@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import {BsDownload, BsViewList} from 'react-icons/bs'
 import Paginator from '../layout/Paginator'
 import {useAuth}  from '../auth/AuthContext'
+import {useParams} from 'react-router-dom'
 // import DocumentCard from '../document/DocumentCard' 
 import { useState, useEffect } from 'react'
 function Documents() {
     const[documents, setDocuments] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
+    const { tag_id } = useParams();
     // const [userGroups, setUserGroups] = useState([])
     const {userGroups} = useAuth();
 
@@ -37,7 +39,7 @@ function Documents() {
     
 
     const fetchDocuments = (page = 1) => {
-        fetch(`https://3.95.74.135.nip.io/documents/api/documents/?page=${page}`, {
+        fetch(`https://3.95.74.135.nip.io/documents/api/documents/?tag=${tag_id}&page=${page}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json'
