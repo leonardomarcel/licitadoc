@@ -48,6 +48,22 @@
     background-color: #3e8e41;
   }
 
+  .login .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .login .links a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .login .links a:hover {
+    text-decoration: underline;
+  }
+
   @media (max-width: 480px) {
     .login {
         width: 100%;

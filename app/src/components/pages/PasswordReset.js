@@ -3,11 +3,10 @@ import styles from './css/LoginPage.module.css'
 import { useState } from "react";
 import {useAuth}  from "../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
 
 
   
-const LoginPage = () => {
+const PasswordResetPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { login } = useAuth();
@@ -36,22 +35,17 @@ const LoginPage = () => {
     return (
         <div className={styles.login}>
             <form onSubmit={handleSubmit}>
-                <h1>login</h1>
-                <input type="text" placeholder="Usuário" value={username} onChange={(e) => setUsername(e.target.value)} required/>
-                <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required={true}/>
-                <button type='submit'>Entrar</button>
+                <h1>Recuperação de sennha</h1>
+                <input type="text" placeholder="insira seu email" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                <button type='submit'>Recuperar</button>
             </form>
             <div className={styles.links}>
-            <Link to={`/password_reset`}>
-                    Recuperar senha
-            </Link>
-            <Link to={`/new_account`}>
-                Criar uma nova conta
-            </Link>
+                <a href="/login">Voltar ao Login</a>
             </div>
+            
         </div>
     );
 }
 
 
-export default LoginPage;
+export default PasswordResetPage;
