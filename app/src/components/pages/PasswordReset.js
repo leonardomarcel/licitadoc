@@ -7,27 +7,36 @@ import { useNavigate } from "react-router-dom";
 
   
 const PasswordResetPage = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const { login } = useAuth();
-    const { user } = useAuth();
-    const navigate = useNavigate();
+    
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-
+    // const navigate = useNavigate();
     
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try {
-            const success = await login({ username, password }); // Chama a função de login do contexto
-            if (success) {
-            
-                navigate("/home", { replace: true }); // Redireciona para o home após login bem-sucedido
+            const res = await fetch("https://3.95.74.135.nip.io/auth/api/password-reset/", {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 'email': email }),
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                setMessage(data.message);
+                console.log(email);
+                // navigate("/login");
+            } else {
+                const data = await res.json();
+                setError(data.error);
+            }
+        } catch (error) {
+            console.error(error);
         }
-      } catch (err) {
-        setError("Credenciais inválidas");
-      }
     };
 
     
@@ -36,9 +45,11 @@ const PasswordResetPage = () => {
         <div className={styles.login}>
             <form onSubmit={handleSubmit}>
                 <h1>Recuperação de sennha</h1>
-                <input type="text" placeholder="insira seu email" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                <input type="text" placeholder="insira seu email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 <button type='submit'>Recuperar</button>
             </form>
+            {message && <p style={{ color: "green" }}>{message}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div className={styles.links}>
                 <a href="/login">Voltar ao Login</a>
             </div>
