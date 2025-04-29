@@ -16,7 +16,7 @@ function NavBar(){
                     {user && (
                         <>
                             <li className={style.item}><Link to='/home'> Home</Link></li>
-                            <li className={style.item}><Link to='/classificacoes/documentos'> Documentos</Link></li>
+                            <li className={style.item}><Link to='/classificacoes/documentos'> Modelos</Link></li>
                             <li className={style.item} onClick={logout}><Link> Logout</Link></li>
                         </>
                     )}
