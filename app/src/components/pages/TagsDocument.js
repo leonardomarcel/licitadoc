@@ -9,8 +9,6 @@ import { useState, useEffect } from 'react'
 import TagsDocumentCard from '../document/TagsDocumentCard'
 function TagsDocument(){
     const[tags, setTags] = useState([])
-    const[removeLoading, setRemoveLoading] = useState(false)
-    const[projectMessagem, setProjectMessage] = useState('')
     const [totalPages, setTotalPages] = useState(1)
     const [currentPage, setCurrentPage] = useState(1)
     const location = useLocation()
@@ -30,7 +28,7 @@ function TagsDocument(){
         .then((resp) => resp.json())
         .then((data) => {
             setTags(data.results)
-            setTotalPages(Math.ceil(data.count / 10))  //  10 itens por página
+            setTotalPages(Math.ceil(data.count / 40))  //  10 itens por página
         })
         .catch((err) => console.log(err))
     }
@@ -39,11 +37,11 @@ function TagsDocument(){
         fetchTags(currentPage)
     }, [currentPage])
 
-    const handlePageChange = (page) => {
-        if (page >= 1 && page <= totalPages) {
-            setCurrentPage(page)
-        }
-    }
+    // const handlePageChange = (page) => {
+    //     if (page >= 1 && page <= totalPages) {
+    //         setCurrentPage(page)
+    //     }
+    // }
 
 
     

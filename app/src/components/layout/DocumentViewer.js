@@ -1,6 +1,6 @@
 
 import { Viewer} from '@react-pdf-viewer/core';
-import { getFilePlugin } from '@react-pdf-viewer/get-file';
+// import { getFilePlugin } from '@react-pdf-viewer/get-file';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import {useParams} from 'react-router-dom'
 import '@react-pdf-viewer/zoom/lib/styles/index.css';
@@ -12,7 +12,7 @@ function DocomuntViewer() {
     const [pdfUrl, setPdfUrl] = useState(null);
     const { id } = useParams();
 
-    const getFilePluginInstance = getFilePlugin();
+    // const getFilePluginInstance = getFilePlugin();
 
     
     

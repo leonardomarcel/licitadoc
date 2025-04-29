@@ -4,7 +4,7 @@ import styles from './css/Home.module.css'
 function Home(){
     return (
         <section className={styles.home_container}>
-            <h1> Bem-vindo ao <span>Licita.doc</span></h1>
+            <h1><span>Licita.doc</span></h1>
             <p>Comece a usar os nosso templates de documentos. </p>
             
         </section>

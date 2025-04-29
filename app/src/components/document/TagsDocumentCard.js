@@ -10,13 +10,13 @@ function TagsDocumentCard({name, tag_id}) {
 
     
     return (
-        <div className={styles.document_card}>
-           <Link to={`/classificacoes/documents/${tag_id}`}>
-                    {name}
-            </Link>
-            
-            
-        </div>
+        <Link to={`/classificacoes/documents/${tag_id}`}>
+            <div className={styles.document_card}>
+                        {name}
+                
+                
+            </div>
+        </Link>
        
     )
 }

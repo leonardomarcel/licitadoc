@@ -11,6 +11,7 @@ import PasswordReset from './components/pages/PasswordReset'
 import NewAccount from './components/pages/NewAccount'
 import TagsDocument from './components/pages/TagsDocument'
 import DocumentViewe from './components/layout/DocumentViewer'
+import TagsDocumentCard from './components/document/TagsDocumentCard'
 import { Worker } from '@react-pdf-viewer/core';
 
 function App() {
